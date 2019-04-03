@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+</head>
+<body>
+  <script>
+
+let gameArray = ["rock", "paper", "scissors"];
+
+function computerPlay(gameArray) {
+return randomChoice = gameArray[Math.floor(Math.random() * gameArray.length)];
+};
+
+const computerChoice = computerPlay(gameArray);
+
+let playerPrompt = (prompt("Rock, paper, or scissors?"));
+let playerChoice = playerPrompt.toLowerCase();
+
+function letsPlay (playerChoice, computerChoice) {
+if (playerChoice === computerChoice) 
+return "Stalemate."; 
+
+else if (playerChoice == "rock") {
+if (computerChoice == "paper"){ return "Defeat. Paper beats rock.";}
+else {return "Victory! Rock beats scissors.";}
+}
+
+else if (playerChoice == "paper") {
+if (computerChoice == "scissors") {return "Defeat. Scissors beat paper.";}
+else {return "Victory! Paper beats rock.";}
+}
+
+else if (playerChoice == "scissors") {
+if (computerChoice == "rock") {return "Defeat. Rock beats scissors.";}
+else {return "Victory! Scissors beat paper.";}
+}
+
+else 
+return "You broke the game.";
+}
+
+
+
+console.log(letsPlay(playerChoice, computerChoice));
+
+
+
+  </script>
+</body>
+</html>
