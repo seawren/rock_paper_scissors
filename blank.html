@@ -6,34 +6,50 @@
 <body>
   <script>
 
+function game () {
+
 let gameArray = ["rock", "paper", "scissors"];
 
 function computerPlay(gameArray) {
 return randomChoice = gameArray[Math.floor(Math.random() * gameArray.length)];
 };
 
-const computerChoice = computerPlay(gameArray);
+const computerChoice1 = computerPlay(gameArray);
+const computerChoice2 = computerPlay(gameArray);
 
-let playerPrompt = (prompt("Rock, paper, or scissors?"));
-let playerChoice = playerPrompt.toLowerCase();
+
+let playerPrompt1 = (prompt("Rock, paper, or scissors?"));
+let playerChoice1 = playerPrompt1.toLowerCase();
+let playerPrompt2 = (prompt("Rock, paper, or scissors?"));
+let playerChoice2 = playerPrompt2.toLowerCase();
+
+
 
 function letsPlay (playerChoice, computerChoice) {
+let playerScore = 0;
+let computerScore = 0;
 if (playerChoice === computerChoice) 
-return "Stalemate."; 
+return "Stalemate. "+ playerScore +"/"+  computerScore;
 
-else if (playerChoice == "rock") {
-if (computerChoice == "paper"){ return "Defeat. Paper beats rock.";}
-else {return "Victory! Rock beats scissors.";}
+else if (playerChoice === "rock") {
+if (computerChoice === "paper"){++computerScore; return "Defeat. Paper beats rock. "+ playerScore +"/"+  computerScore;}
+else {
+++playerScore;
+return "Victory! Rock beats scissors. "+ playerScore + "/"+ computerScore;}
 }
 
-else if (playerChoice == "paper") {
-if (computerChoice == "scissors") {return "Defeat. Scissors beat paper.";}
-else {return "Victory! Paper beats rock.";}
+else if (playerChoice === "paper") {
+if (computerChoice === "scissors") {++computerScore; return "Defeat. Scissors beat paper. " + playerScore + "/"+ computerScore;}
+else {
+++playerScore;
+return "Victory! Paper beats rock. "+ playerScore + "/"+ computerScore;}
 }
 
-else if (playerChoice == "scissors") {
-if (computerChoice == "rock") {return "Defeat. Rock beats scissors.";}
-else {return "Victory! Scissors beat paper.";}
+else if (playerChoice === "scissors") {
+if (computerChoice === "rock") {++computerScore; return "Defeat. Rock beats scissors. " + playerScore + "/"+ computerScore;}
+else {
+++playerScore;
+return "Victory! Scissors beat paper. " + playerScore +"/"+ computerScore;}
 }
 
 else 
@@ -41,8 +57,43 @@ return "You broke the game.";
 }
 
 
+function convertPlayer () {
+let stringOne = letsPlay(playerChoice1, computerChoice1);
+let convertOne = stringOne.slice(-3,-2);
+let convertOneNum = parseInt(convertOne);
+let stringTwo = letsPlay(playerChoice2, computerChoice2);
+let convertTwo = stringTwo.slice(-3,-2);
+let convertTwoNum = parseInt(convertTwo);
+return convertOneNum + convertTwoNum;
+}
 
-console.log(letsPlay(playerChoice, computerChoice));
+function convertComputer () {
+let stringOne = letsPlay(playerChoice1, computerChoice1);
+let convertOne = stringOne.slice(-1);
+let convertOneNum = parseInt(convertOne);
+let stringTwo = letsPlay(playerChoice2, computerChoice2);
+let convertTwo = stringTwo.slice(-1);
+let convertTwoNum = parseInt(convertTwo);
+return convertOneNum + convertTwoNum;
+}
+
+if (convertPlayer() > convertComputer()) {
+return letsPlay(playerChoice1, computerChoice1) + letsPlay(playerChoice2, computerChoice2) + "Score: " + convertPlayer() + "/" + convertComputer() + " You won!";
+
+}else if ((convertPlayer() > 5) || (convertComputer() > 5)){ 
+return "You broke the game.";
+
+}else if (convertPlayer() < convertComputer()) {
+return letsPlay(playerChoice1, computerChoice1) + letsPlay(playerChoice2, computerChoice2) + "Score: " + convertPlayer() + "/" + convertComputer() + " You lose.";
+
+}else if (convertPlayer() === convertComputer()) {
+return letsPlay(playerChoice1, computerChoice1) + letsPlay(playerChoice2, computerChoice2) + "A Tai - er, tie!";
+
+}else {
+return "See? It's broken!";
+}
+}
+console.log(game());
 
 
 
