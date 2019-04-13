@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+</head>
+<body>
+  <script>
+
+function game () {
+
+let gameArray = ["rock", "paper", "scissors"];
+
+function computerPlay(gameArray) {
+return randomChoice = gameArray[Math.floor(Math.random() * gameArray.length)];
+};
+
+const computerChoice1 = computerPlay(gameArray);
+const computerChoice2 = computerPlay(gameArray);
+const computerChoice3 = computerPlay(gameArray);
+const computerChoice4 = computerPlay(gameArray);
+const computerChoice5 = computerPlay(gameArray);
+
+let playerPrompt1 = (prompt("Rock, paper, or scissors?"));
+let playerChoice1 = playerPrompt1.toLowerCase();
+
+let playerPrompt2 = (prompt("Rock, paper, or scissors?"));
+let playerChoice2 = playerPrompt2.toLowerCase();
+
+let playerPrompt3 = (prompt("Rock, paper, or scissors?"));
+let playerChoice3 = playerPrompt3.toLowerCase();
+
+let playerPrompt4 = (prompt("Rock, paper, or scissors?"));
+let playerChoice4 = playerPrompt4.toLowerCase();
+
+let playerPrompt5 = (prompt("Rock, paper, or scissors?"));
+let playerChoice5 = playerPrompt5.toLowerCase();
+
+function letsPlay (playerChoice, computerChoice) {
+let playerScore = 0;
+let computerScore = 0;
+if (playerChoice === computerChoice) 
+return " Stalemate. "+ playerScore +"/"+  computerScore;
+
+else if (playerChoice == "rock") {
+if (computerChoice == "paper"){++computerScore; return " Defeat. Paper beats rock. "+ playerScore +"/"+  computerScore;}
+else {
+++playerScore;
+return " Victory! Rock beats scissors. "+ playerScore + "/"+ computerScore;}
+}
+
+else if (playerChoice == "paper") {
+if (computerChoice == "scissors") {++computerScore; return " Defeat. Scissors beat paper. " + playerScore + "/"+ computerScore;}
+else {
+++playerScore;
+return " Victory! Paper beats rock. "+ playerScore + "/"+ computerScore;}
+}
+
+else if (playerChoice == "scissors") {
+if (computerChoice == "rock") {++computerScore; return " Defeat. Rock beats scissors. " + playerScore + "/"+ computerScore;}
+else {
+++playerScore;
+return " Victory! Scissors beat paper. " + playerScore +"/"+ computerScore;}
+}
+
+else 
+return " You broke the game.";
+}
+
+
+function convertPlayer () {
+let stringOne = letsPlay(playerChoice1, computerChoice1);
+let convertOne = stringOne.slice(-3,-2);
+let convertOneNum = parseInt(convertOne);
+
+let stringTwo = letsPlay(playerChoice2, computerChoice2);
+let convertTwo = stringTwo.slice(-3,-2);
+let convertTwoNum = parseInt(convertTwo);
+
+let stringThree = letsPlay(playerChoice3, computerChoice3);
+let convertThree = stringThree.slice(-3, -2);
+let convertThreeNum = parseInt(convertThree);
+
+let stringFour = letsPlay(playerChoice4, computerChoice4);
+let convertFour = stringFour.slice(-3, -2);
+let convertFourNum = parseInt(convertFour);
+
+let stringFive = letsPlay(playerChoice5, computerChoice5);
+let convertFive = stringFive.slice(-3, -2);
+let convertFiveNum = parseInt(convertFive);
+
+return convertOneNum + convertTwoNum + convertThreeNum + convertFourNum + convertFiveNum;
+}
+
+function convertComputer () {
+let stringOne = letsPlay(playerChoice1, computerChoice1);
+let convertOne = stringOne.slice(-1);
+let convertOneNum = parseInt(convertOne);
+
+let stringTwo = letsPlay(playerChoice2, computerChoice2);
+let convertTwo = stringTwo.slice(-1);
+let convertTwoNum = parseInt(convertTwo);
+
+let stringThree = letsPlay(playerChoice3, computerChoice3);
+let convertThree = stringThree.slice(-1);
+let convertThreeNum = parseInt(convertThree);
+
+let stringFour = letsPlay(playerChoice4, computerChoice4);
+let convertFour = stringFour.slice(-1);
+let convertFourNum = parseInt(convertFour);
+
+let stringFive = letsPlay(playerChoice5, computerChoice5);
+let convertFive = stringFive.slice(-1);
+let convertFiveNum = parseInt(convertFive);
+
+return convertOneNum + convertTwoNum + convertThreeNum + convertFourNum + convertFiveNum;
+
+}
+
+if (convertPlayer() > convertComputer()) {
+return letsPlay(playerChoice1, computerChoice1) + letsPlay(playerChoice2, computerChoice2) + letsPlay(playerChoice3, computerChoice3) + 
+letsPlay(playerChoice4, computerChoice4)+ letsPlay(playerChoice5, computerChoice5) + " Score: " + convertPlayer() + "/" + convertComputer() + " You won!";
+
+}else if ((convertPlayer() > 5) || (convertComputer() > 5)){ 
+return letsPlay(playerChoice1, computerChoice1) + letsPlay(playerChoice2, computerChoice2) + letsPlay(playerChoice3, computerChoice3) + 
+letsPlay(playerChoice4, computerChoice4)+ letsPlay(playerChoice5, computerChoice5) + " You broke the game.";
+
+}else if (convertPlayer() < convertComputer()) {
+return letsPlay(playerChoice1, computerChoice1) + letsPlay(playerChoice2, computerChoice2) + letsPlay(playerChoice3, computerChoice3) + 
+letsPlay(playerChoice4, computerChoice4)+ letsPlay(playerChoice5, computerChoice5) + " Score: " + convertPlayer() + "/" + convertComputer() + " You lose.";
+
+}else if (convertPlayer() === convertComputer()) {
+return letsPlay(playerChoice1, computerChoice1) + letsPlay(playerChoice2, computerChoice2) + letsPlay(playerChoice3, computerChoice3) + 
+letsPlay(playerChoice4, computerChoice4)+ letsPlay(playerChoice5, computerChoice5) + " Score: " + convertPlayer() + "/" + convertComputer() + " A Tai - er, tie!";
+
+}else {
+return letsPlay(playerChoice1, computerChoice1) + letsPlay(playerChoice2, computerChoice2)+ letsPlay(playerChoice3, computerChoice3) + 
+letsPlay(playerChoice4, computerChoice4)+ letsPlay(playerChoice5, computerChoice5) + " See? It's broken!";
+}
+}
+console.log(game());
+
+
+
+  </script>
+</body>
+</html>
